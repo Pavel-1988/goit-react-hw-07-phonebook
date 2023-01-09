@@ -1,15 +1,15 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/ContactSlice';
-import { getStatusFilter, getStatusContact } from 'redux/selectors';
-import {List,  ListItem } from './ContactList.styled';
+import { useSelector } from 'react-redux';
+import { useFetchContactsQuery } from 'redux/contactsApi';
+import { getStatusFilter } from 'redux/selectors';
+import ContactListItem from 'components/ContactListItem/ContactListItem';
+import {List} from './ContactList.styled';
 
 
 export function ContactList() {
   
   const filter = useSelector(getStatusFilter);
-  const contacts = useSelector(getStatusContact)
-  const dispatch = useDispatch();
+  const { data: contacts = [], isFetching } = useFetchContactsQuery();
 
   const contactsList = () => {
     const normalizedFilter = filter.toLowerCase();
@@ -17,35 +17,15 @@ export function ContactList() {
     contact.name.toLowerCase().includes(normalizedFilter))
   }
 
-  const deleteContacts = (contactId) => {
-    dispatch(deleteContact(contactId))
-  }
 
   return (
-    <List>
-      {contactsList().map(({id, name, number}) => (
-        <ListItem key={id}>
-          <p>
-            {name} : {number}
-          </p>          
-          <button onClick={() => deleteContacts(id)}>
-            Delete
-          </button>
-        </ListItem>
-      ))}
-     </List>
+    <>
+      {isFetching && <p> Loading...</p>}
+      <List>
+        {contactsList().map(contact  => (
+          < ContactListItem key={contact.id} {... contact} />
+        ))}
+      </List>
+    </>
  )
 };
-
-
-
-// ContactList.propTypes = {
-// 	contactsList: PropTypes.arrayOf(
-// 		PropTypes.shape({
-// 			id: PropTypes.string.isRequired,
-// 			name: PropTypes.string.isRequired,
-// 			number: PropTypes.string.isRequired,
-// 		 })
-// 		).isRequired,
-// 	onDeleteContact: PropTypes.func.isRequired,
-// }

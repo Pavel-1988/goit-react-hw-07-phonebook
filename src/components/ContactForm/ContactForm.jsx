@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setContact } from 'redux/ContactSlice';
-import { getStatusContact } from 'redux/selectors';
+import { useFetchContactsQuery, useCreateContactMutation} from 'redux/contactsApi';
 
 import { FormContainer, ListSpan } from './ContactForm.styled';
 import { nanoid } from 'nanoid';
@@ -12,8 +10,8 @@ export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const contacts = useSelector(getStatusContact);
-  const dispatch = useDispatch();
+  const { data: contacts } = useFetchContactsQuery();
+  const [createContact, { isLoading }] = useCreateContactMutation();
 
   const nameInputId = nanoid();
   const numberInputId = nanoid();
@@ -34,7 +32,7 @@ export const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const contactsName = contacts.map(contact => contact.name)
+    const contactsName = contacts.map(contact => contact.name);
 
     const filterName = contactsName.some(
       contactName => contactName.toLowerCase() === name.toLowerCase()
@@ -42,20 +40,18 @@ export const ContactForm = () => {
     if (filterName) {
 		return  Notiflix.Notify.failure('You already have a contact with that name');
     }
-     const newContact = {
+
+    const newContact = {
       id: nanoid(),
       name,
       number,
     };
 
-    formSubmitHandler(newContact);
+    createContact(newContact);
+    Notiflix.Notify.success('You have just created a new contact');
     reset();
   };
 
-  const formSubmitHandler = (newConatct) => {
-    dispatch(setContact(newConatct));
-    Notiflix.Notify.success('You have just created a new contact');
-  }
 
   const reset = () => {
     setName('');
@@ -64,7 +60,7 @@ export const ContactForm = () => {
 
    return (
       <FormContainer  onSubmit={handleSubmit}>
-        <label htmlFor={nameInputId} >
+        <label >
           <ListSpan >Name</ListSpan>
           <input
             onChange={onHandleChange}
@@ -90,8 +86,8 @@ export const ContactForm = () => {
             required
           />
         </label>
-          <button  type="submit">
-          Add contact
+          <button  type="submit" disabled={isLoading}>
+          {isLoading ? 'Adding contact ...' : 'Add contact'}
         </button>
     </FormContainer>
     )

@@ -19,11 +19,12 @@ export const Filter = () => {
   }
 
   return (
-    <FilterLabel htmlFor={filterId}>
+    <FilterLabel>
       Find contacts by name
       <input
         type="text"
         value={filter}
+        id={filterId}
         onChange={changeFilter} />
     </FilterLabel>
   )
