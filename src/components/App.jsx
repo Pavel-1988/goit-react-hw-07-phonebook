@@ -4,15 +4,17 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 
+import { Section } from './App.styled';
+
 export const App = () => {
 
   const {data: contacts = [], isLoading} = useFetchContactsQuery
     return (
-      <>
+      <Section>
         <h1>Phonebook</h1>
         <ContactForm />
         <h2>Contacts</h2>
-        {/* {contacts.length > 0 ? (
+        {contacts.length > 0 ? (
           <>
             {isLoading && <p>Loading ...</p>}
              <Filter />
@@ -21,12 +23,12 @@ export const App = () => {
         ) : (
             <p>You have no contacts</p>
         )
-      } */}
+      }
 
-      <Filter />
-      <ContactList />
+      {/* <Filter />
+      <ContactList /> */}
 
-      </>
+      </Section>
     )
 }
   
