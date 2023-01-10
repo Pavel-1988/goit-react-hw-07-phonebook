@@ -12,7 +12,7 @@ export const App = () => {
         <h1>Phonebook</h1>
         <ContactForm />
         <h2>Contacts</h2>
-        {contacts.length > 0 ? (
+        {/* {contacts.length > 0 ? (
           <>
             {isLoading && <p>Loading ...</p>}
              <Filter />
@@ -21,10 +21,10 @@ export const App = () => {
         ) : (
             <p>You have no contacts</p>
         )
-      }
+      } */}
 
-      {/* <Filter />
-      <ContactList /> */}
+      <Filter />
+      <ContactList />
 
       </>
     )
