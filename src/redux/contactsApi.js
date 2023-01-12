@@ -4,27 +4,28 @@ export const contactsApi = createApi({
   reducerPath: 'contactsApi',
   tagTypes: ['contact'],
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://63b67deb58084a7af3b3c24c.mockapi.io/contacts/'
+    // baseUrl: 'https://63b67deb58084a7af3b3c24c.mockapi.io/contacts/'
     // baseUrl: 'https://6363c1b38a3337d9a2e6d982.mockapi.io/contacts/'
-    // baseUrl: 'https://63664b45046eddf1bafcedd9.mockapi.io/',
+    baseUrl: 'https://63664b45046eddf1bafcedd9.mockapi.io/',
 
   }),
+  // tagTypes: ['Contact'],
   endpoints: builder => ({
     fetchContacts: builder.query({
       query: () => 'contacts',
       providesTags: ['Contact']
     }),
-    createContact: builder.mutation({
-      query: body => ({
+    addContact: builder.mutation({
+      query: newContact => ({
         url: 'contacts',
         method: 'POST',
-        body,
+        body: newContact,
       }),
       invalidatesTags: ['Contact']
     }),
     deleteContact: builder.mutation({
-      query: contactId => ({
-        url: `contacts/${contactId}`,
+      query: Id => ({
+        url: `contacts/${Id}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Contact'],
@@ -34,6 +35,6 @@ export const contactsApi = createApi({
 
 export const {
   useFetchContactsQuery,
-  useCreateContactMutation,
+  useAddContactMutation,
   useDeleteContactMutation
 } = contactsApi

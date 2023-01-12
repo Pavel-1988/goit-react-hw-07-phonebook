@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 
 export const Section = styled.section`
-  width: 50%;
-	margin: 120px auto;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  flex-direction: column;
+  width: 500px;
+  margin: 0 auto;
+  
 `
