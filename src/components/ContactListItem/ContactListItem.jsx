@@ -1,6 +1,6 @@
 import React from "react";
 import { useDeleteContactMutation } from "redux/contactsApi";
-import { ListItem } from "./ContactListItem.styled";
+import { List } from "./ContactListItem.styled";
 import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
@@ -19,14 +19,18 @@ export default function ContactListItem({ id, name, phone }) {
   }, [isError, isSuccess, name]);
 
   return (
-    <ListItem key={id}>
+    <List key={id}>
       <p>
-        {name}:{phone}
+        {name}:
       </p>
+       <p>
+        {phone}
+      </p>
+
       {isLoading ? ('Delelting contact ...') : (
         <button onClick={() => deleteContact(id)}>Delete</button>
       )}
-    </ListItem>
+    </List>
   )
 }
 

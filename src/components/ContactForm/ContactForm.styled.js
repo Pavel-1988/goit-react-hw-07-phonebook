@@ -25,7 +25,7 @@ export const FormContainer = styled.form`
     transition: all 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
   }
   &>button:hover,
-  button:focus{
+    button:focus{
     background-color: rgb(76, 75, 75);
     color: white;
   }
@@ -39,7 +39,7 @@ export const ListSpan = styled.span`
 export const ListInput = styled.input`
     display: block;
     width: 100%;
-    margin-bottom: 30px;
+    margin: 5px 0px 30px 0px;
     border: 1px solid black;
     border-radius: 20px;
     padding: 10px;
@@ -53,9 +53,5 @@ export const addBtn = styled.button`
   cursor: pointer;
   transition: all 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
 
-  /* .button:hover,
-  .button:focus {
-  background-color: rgb(76, 75, 75);
-  color: white;} */
 
 `;
