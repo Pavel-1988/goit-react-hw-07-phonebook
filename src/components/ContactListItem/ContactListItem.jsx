@@ -3,6 +3,7 @@ import { useDeleteContactMutation } from "redux/contactsApi";
 import { List } from "./ContactListItem.styled";
 import { toast } from 'react-toastify';
 import { useEffect } from 'react';
+import { RotatingLines } from  'react-loader-spinner'
 import PropTypes from 'prop-types';
 
 
@@ -11,7 +12,7 @@ export default function ContactListItem({ id, name, phone }) {
 
   useEffect(() => {
     if (isSuccess) {
-      toast.warning(`${name} removed from your contacts`);
+      toast.warning(`" ${name} " removed from your contacts`);
     }
     if (isError) {
       toast.error(isError.data);
@@ -20,14 +21,16 @@ export default function ContactListItem({ id, name, phone }) {
 
   return (
     <List key={id}>
-      <p>
-        {name}:
-      </p>
-       <p>
-        {phone}
-      </p>
+      <p>{name}:</p>
+      <p>{phone}</p>
 
-      {isLoading ? ('Delelting contact ...') : (
+      {isLoading ? <RotatingLines
+        strokeColor="grey"
+        strokeWidth="5"
+        animationDuration="0.75"
+        width="46"
+        visible={true}
+      /> : (
         <button onClick={() => deleteContact(id)}>Delete</button>
       )}
     </List>
