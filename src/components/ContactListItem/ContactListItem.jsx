@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 import { RotatingLines } from  'react-loader-spinner'
 import PropTypes from 'prop-types';
+// import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function ContactListItem({ id, name, phone }) {
@@ -20,11 +21,14 @@ export default function ContactListItem({ id, name, phone }) {
   }, [isError, isSuccess, name]);
 
   return (
+    
     <List key={id}>
+      
       <p>{name}:</p>
       <p>{phone}</p>
 
-      {isLoading ? <RotatingLines
+      {isLoading ?
+        <RotatingLines
         strokeColor="grey"
         strokeWidth="5"
         animationDuration="0.75"
@@ -32,8 +36,10 @@ export default function ContactListItem({ id, name, phone }) {
         visible={true}
       /> : (
         <button onClick={() => deleteContact(id)}>Delete</button>
-      )}
+        )}
+   
     </List>
+    
   )
 }
 

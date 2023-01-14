@@ -39,6 +39,7 @@ export const ListSpan = styled.span`
 export const ListInput = styled.input`
     display: block;
     width: 100%;
+    font-size: 20px;
     margin: 5px 0px 30px 0px;
     border: 1px solid black;
     border-radius: 20px;

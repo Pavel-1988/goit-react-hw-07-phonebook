@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 
 export const List = styled.li`
-  /* display: flex;
-  align-items: center;
-  font-size:20px;
-  padding: 0; */
+
 
   display: flex;
 	justify-content: space-between;

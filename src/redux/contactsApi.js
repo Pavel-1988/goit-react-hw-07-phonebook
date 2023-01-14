@@ -5,8 +5,6 @@ export const contactsApi = createApi({
   tagTypes: ['contact'],
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://63b67deb58084a7af3b3c24c.mockapi.io/',
-    // baseUrl: 'https://6363c1b38a3337d9a2e6d982.mockapi.io/contacts/'
-    // baseUrl: 'https://63664b45046eddf1bafcedd9.mockapi.io/',
 
   }),
   // tagTypes: ['Contact'],
@@ -15,9 +13,9 @@ export const contactsApi = createApi({
       query: () => 'contacts',
       providesTags: ['Contact']
     }),
-    addContact: builder.mutation({
+   addContact: builder.mutation({
       query: newContact => ({
-        url: 'contacts',
+        url: `contacts`,
         method: 'POST',
         body: newContact,
       }),
