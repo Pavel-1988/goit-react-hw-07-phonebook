@@ -26,7 +26,7 @@ export const ContactList = () => {
           }
       {data && 
         data
-        .filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()) || contact.phone.includes(filter))
+        .filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()) || contact.number.includes(filter))
         .map(({ name, number, id }) => (
           <ContactListItem name={name} number={number} key={id} id={id} />
           ))
