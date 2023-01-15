@@ -5,10 +5,10 @@ import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 import { RotatingLines } from  'react-loader-spinner'
 import PropTypes from 'prop-types';
-// import 'react-toastify/dist/ReactToastify.css';
 
 
-export default function ContactListItem({ id, name, phone }) {
+
+export default function ContactListItem({ id, name, number }) {
   const [deleteContact, { isLoading, isSuccess, isError }] = useDeleteContactMutation();
 
   useEffect(() => {
@@ -25,19 +25,18 @@ export default function ContactListItem({ id, name, phone }) {
     <List key={id}>
       
       <p>{name}:</p>
-      <p>{phone}</p>
+      <p>{number}</p>
 
       {isLoading ?
         <RotatingLines
-        strokeColor="grey"
+        strokeColor="#0c866c"
         strokeWidth="5"
         animationDuration="0.75"
         width="46"
         visible={true}
       /> : (
         <button onClick={() => deleteContact(id)}>Delete</button>
-        )}
-   
+        )}  
     </List>
     
   )
@@ -46,34 +45,5 @@ export default function ContactListItem({ id, name, phone }) {
 ContactListItem.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
 };
-
-//====================d1=========================//
-
-// import React from "react";
-// import Notiflix from "notiflix";
-// import { useDeleteContactMutation } from "redux/contactsApi";
-// import { ListItem } from "./ContactListItem.styled";
-
-// export default function ContactListItem({ id, name, number }) {
-//   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
-
-//   const deleteContacts = contactId => {
-//     deleteContact(contactId);
-//     Notiflix.Notify.success ('You have just deleted a contact')
-//   }
-
-//   return (
-//     <ListItem key={id}>
-//       <p>
-//         {name}:{number}
-//       </p>
-//       <button
-//         type="button"
-//         onClick={() => deleteContacts(id)}>
-//             {isDeleting ? 'Deleting contact ... ' : 'Delete'}
-//       </button>
-//     </ListItem>
-//   )
-// }

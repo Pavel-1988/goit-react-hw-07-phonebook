@@ -1,6 +1,6 @@
 import { React } from 'react';
 import { useSelector } from 'react-redux';
-import { List,  } from './ContactList.styled';
+import { List, RotatingDiv } from './ContactList.styled';
 import { useFetchContactsQuery } from 'redux/contactsApi';
 import ContactListItem from '../ContactListItem/ContactListItem'
 
@@ -14,19 +14,21 @@ export const ContactList = () => {
   
     <List>
       {isFetching &&
+        <RotatingDiv>
         <RotatingLines
-          strokeColor="grey"
+          strokeColor="#0c866c"
           strokeWidth="5"
           animationDuration="0.75"
           width="46"
           visible={true}
           />
+          </RotatingDiv>
           }
       {data && 
         data
         .filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()) || contact.phone.includes(filter))
-        .map(({ name, phone, id }) => (
-          <ContactListItem name={name} phone={phone} key={id} id={id} />
+        .map(({ name, number, id }) => (
+          <ContactListItem name={name} number={number} key={id} id={id} />
           ))
       }
       </List>

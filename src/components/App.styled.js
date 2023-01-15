@@ -7,5 +7,9 @@ export const Section = styled.section`
   flex-direction: column;
   width: 500px;
   margin: 0 auto;
+
+  &>h1, h2{
+    color: #0c866c;
+  }
   
 `

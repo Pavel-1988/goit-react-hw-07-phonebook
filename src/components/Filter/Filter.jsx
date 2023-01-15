@@ -1,4 +1,3 @@
-
 import { useDispatch, useSelector } from 'react-redux';
 import { filterContacts } from 'redux/formSlice';
 import { FilterLabel } from './Filter.styled';

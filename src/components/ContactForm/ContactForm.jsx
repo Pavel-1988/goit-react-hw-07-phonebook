@@ -92,7 +92,7 @@ export const ContactForm = () => {
         </label>
          {isLoading ? (
            <RotatingLines
-              strokeColor="grey"
+              strokeColor="#0c866c"
               strokeWidth="5"
               animationDuration="0.75"
               width="46"

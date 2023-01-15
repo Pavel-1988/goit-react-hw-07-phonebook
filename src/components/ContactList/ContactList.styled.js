@@ -12,5 +12,7 @@ width: 500px;
 
 `;
 
-
+export const RotatingDiv = styled.div`
+margin: 0 auto;
+`
 

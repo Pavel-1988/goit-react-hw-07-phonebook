@@ -19,6 +19,7 @@ export const FormContainer = styled.form`
     width: 150px;
     margin: 10px 0 20px;
     padding: 10px 15px;
+    background-color:#bdede3;
     border: 1px solid black;
     border-radius: 20px;
     cursor: pointer;
@@ -26,7 +27,7 @@ export const FormContainer = styled.form`
   }
   &>button:hover,
     button:focus{
-    background-color: rgb(76, 75, 75);
+    background-color:#0c866c;
     color: white;
   }
 
@@ -37,13 +38,13 @@ export const ListSpan = styled.span`
 `;
 
 export const ListInput = styled.input`
-    display: block;
-    width: 100%;
-    font-size: 20px;
-    margin: 5px 0px 30px 0px;
-    border: 1px solid black;
-    border-radius: 20px;
-    padding: 10px;
+  display: block;
+  width: 100%;
+  font-size: 20px;
+  margin: 5px 0px 30px 0px;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px;
 `;
 
 export const addBtn = styled.button`
@@ -53,6 +54,4 @@ export const addBtn = styled.button`
   border-radius: 20px;
   cursor: pointer;
   transition: all 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
-
-
 `;

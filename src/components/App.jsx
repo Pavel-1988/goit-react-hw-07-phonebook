@@ -10,7 +10,7 @@ export default function App() {
   return (
     <>
       <Section>
-        <ToastContainer />
+        <ToastContainer autoClose={2000} />
         <h1>Phonebook</h1>
         <ContactForm />
         <h2>Contacts</h2>
